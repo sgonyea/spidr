@@ -24,5 +24,9 @@ module Spidr
       @password = password
     end
 
+    def to_hash
+      {:username => @username, :password => @password}
+    end
+
   end
 end
