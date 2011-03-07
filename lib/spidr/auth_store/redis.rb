@@ -41,7 +41,7 @@ module Spidr
         keys  = @redis.zrevrangebyscore r_key, arity.length, 0, :withscores => true
 
         keys.each_slice(2) do |score, key|
-          if arity[0,score].join == key
+          if arity[0,score].join('/') == key
             auth_loc = @nspace + key
 
             return  AuthCredential.new(@redis.hget(auth_loc, 'username'), @redis.hget(auth_loc, 'password'))
