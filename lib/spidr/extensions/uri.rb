@@ -44,4 +44,10 @@ module URI
       '/'
     end
   end
+
+  class Generic
+    def host_url
+      @host_url ||= "#{self.scheme}://#{self.host}#{self.port ? ":#{self.port}" : ''}"
+    end
+  end
 end
